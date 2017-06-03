@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/popup1"
+        android:title="风格转换" />
+
+    <item
+        android:id="@+id/popup2"
+        android:title="密码管理" />
+
+    <item
+        android:id="@+id/popup3"
+        android:title="累计记账" />
+
+    <item
+        android:id="@+id/popup4"
+        android:title="天气查询" />
+
+    <item
+        android:id="@+id/popup5"
+        android:title="单词查询" />
+</menu>
