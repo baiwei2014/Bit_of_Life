@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gesture_lock_unselected">#bdbdbd</color>
+    <color name="gesture_lock_selected">#3DC0BC</color>
+    <color name="gesture_lock_selected_dark">#3A9E81</color>
+    <color name="black">#000000</color>
+    <color name="dark_grey">#808080</color>
+    <color name="light_grey">#d0d0d0</color>
+    <color name="blue">#1a8cff</color>
+    <color name="red">#ff1a40</color>
+    <color name="green">#2bd965</color>
+</resources>
