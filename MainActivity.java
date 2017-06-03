@@ -35,7 +35,42 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -50,6 +85,7 @@ import java.util.List;
 
 
 public class MainActivity extends Activity {
+    private static final int UPDATE_CONTENT = 0;
     private ImageView iv_left;
     private ImageView iv_right;
     private TextView tv_date;
@@ -167,6 +203,7 @@ public class MainActivity extends Activity {
                                 if (style == 1) {
                                     editor.putInt("STYLE", 2);
                                     editor.commit();
+
                                     changeStyle(2);
                                 } else if (style == 2) {
                                     editor.putInt("STYLE", 1);
@@ -204,6 +241,9 @@ public class MainActivity extends Activity {
                                 break;
                             case R.id.popup4:
                                 showAlertDialog();
+                                break;
+                            case R.id.popup5:
+                                showAlertDialog2();
                                 break;
                             default:
                                 break;
@@ -317,6 +357,85 @@ public class MainActivity extends Activity {
             }
         });
     }
+    private void showAlertDialog2() {
+        final AlertDialog dialog = new AlertDialog.Builder(this).create();
+        dialog.setView(LayoutInflater.from(this).inflate(R.layout.alert_dialog2, null));
+        dialog.show();
+        dialog.getWindow().setContentView(R.layout.alert_dialog2);
+        Button btnPositive1 = (Button) dialog.findViewById(R.id.btn_add1);
+        Button btnNegative1 = (Button) dialog.findViewById(R.id.btn_cancel1);
+
+        btnPositive1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                final EditText etContent1 = (EditText) dialog.findViewById(R.id.et_content1);
+                final String s=etContent1.getText().toString();
+                ConnectivityManager connMgr= (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo= connMgr.getActiveNetworkInfo();
+                if (networkInfo== null || !networkInfo.isConnected()) {
+                    Toast.makeText(MainActivity.this, "当前没有可用网络！", Toast.LENGTH_SHORT).show();
+                } else {
+                        final String webServiceUrl = "http://fy.webxml.com.cn/webservices/EnglishChinese.asmx/TranslatorString";
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                HttpURLConnection connection = null;
+                                try {
+                                    Log.i("key", "Begin the connetcion.");
+                                    URL url = new URL(webServiceUrl);
+                                    connection = (HttpURLConnection) url.openConnection();
+                                    connection.setDoOutput(true);
+                                    connection.setReadTimeout(8000);
+                                    connection.setConnectTimeout(8000);
+                                    connection.setRequestMethod("POST");
+                                    connection.connect();
+
+                                    DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+                                    String request =s.toString();
+                                    Log.i("test", request.toString());
+                                    request = URLEncoder.encode(request, "utf-8");
+                                    out.writeBytes("wordKey=" + request);
+                                    out.flush();
+                                    out.close();
+
+                                    InputStream in = connection.getInputStream();
+                                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                                    StringBuilder response = new StringBuilder();
+                                    String line;
+
+                                    while ((line = reader.readLine()) != null) {
+                                        response.append(line);
+                                    }
+
+                                    Message message = new Message();
+                                    message.what =UPDATE_CONTENT;
+                                    message.obj = parseXMLWithPull(response.toString());
+                                    handler.sendMessage(message);
+
+                                    Log.i("response", response.toString());
+                                }
+                                catch (Exception ex) {
+                                    Log.i("error", "Fail to connect:" + ex.toString());
+                                    ex.printStackTrace();
+                                }
+                                finally {
+                                    if (connection != null) {
+                                        connection.disconnect();
+                                    }
+                                }
+                            }
+                        }).start();
+                }
+                dialog.dismiss();
+            }
+        });
+        btnNegative1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                dialog.dismiss();
+            }
+        });
+    }
 
     private void registRemind() {
         Intent intent = new Intent("E_CLOCK");
@@ -368,7 +487,66 @@ public class MainActivity extends Activity {
             }
         }
     }
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case UPDATE_CONTENT:
+                    List<String> list = (List<String>) message.obj;
 
+                    for (int i = 0; i < list.size(); i++)
+                        Log.i("" + i, list.get(i));
+
+                    if (list.size() == 1) {
+                        Toast.makeText(MainActivity.this, "单词不存在，请重新输入", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        // TextView TV1 = (TextView)findViewById(R.id.tv1);
+                        //  TV1.setText(list.get(0)+list.get(1)+list.get(3));
+                        AlertDialog ad = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("单词："+list.get(0)+"   "+"音标："+list.get(1)+"   "+"释义："+list.get(3))
+                                .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                    }
+                                }).show();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+
+    private List<String> parseXMLWithPull(String xml) throws XmlPullParserException, IOException {
+        try {
+            List<String> list = new ArrayList<>();
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+            parser.setInput(new StringReader(xml));
+            int eventType = parser.getEventType();
+
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                switch (eventType) {
+                    case XmlPullParser.START_TAG:
+                        if ("string".equals(parser.getName())) {
+                            String str = parser.nextText();
+                            list.add(str);
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        break;
+                    default:
+                        break;
+                }
+                eventType = parser.next();
+            }
+            return  list;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
     private class WeatherWebService extends AsyncTask<String, Integer, ArrayList<String>> {
         public String city;
@@ -428,5 +606,9 @@ public class MainActivity extends Activity {
             }
         }
     }
+
+
+
+
 }
 
