@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/style3">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请输入查询起始时间"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:gravity="center_horizontal"/>
+
+    <DatePicker
+        android:id="@+id/datepicker_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请输入查询终止时间"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:gravity="center_horizontal"/>
+
+    <DatePicker
+        android:id="@+id/datepicker_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
