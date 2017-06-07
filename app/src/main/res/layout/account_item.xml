@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id= "@+id/account_layout"
+    android:background="@drawable/account_item"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id= "@+id/account_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src= "@drawable/others"
+        />
+
+    <TextView
+        android:id= "@+id/account_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/account_image"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:text= "购物"
+        android:textSize="24sp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id= "@+id/account_remarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/account_image"
+        android:layout_below="@id/account_type"
+        android:text= "今天要好好开心"
+        android:textSize="15sp"
+        android:textColor="#eeeeee"/>
+
+    <TextView
+        android:id= "@+id/account_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:text= "-174.00"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        />
+
+    <TextView
+        android:id= "@+id/account_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:text= ""
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        />
+
+
+
+
+
+</RelativeLayout>
