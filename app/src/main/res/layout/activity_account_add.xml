@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_account__add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bianguojian.project.AccountAdd">
+    <LinearLayout
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="@drawable/income"
+            android:id= "@+id/income"
+            android:elevation="3dp"
+            android:text="收入"
+            android:layout_width="70dp"
+            android:layout_height="30dp" />
+        <Button
+            android:background="@drawable/outgo"
+            android:id= "@+id/outgo"
+            android:elevation="3dp"
+            android:textColor="@color/blue"
+            android:text="支出"
+            android:layout_width="70dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:background="#ffffff"
+        android:padding="10dp">
+        <ImageView
+            android:id= "@+id/account_add_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle"
+            android:src= "@drawable/catering"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false" />
+
+        <TextView
+            android:id= "@+id/account_add_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/account_add_image"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="一般" />
+
+        <TextView
+            android:id= "@+id/account_add_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="33sp"
+            android:textColor="#655f5f"
+            android:text= "0.00"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:id= "@+id/account_add_sv"
+        android:background="#cccccc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:layout_marginTop="10dp"
+            android:id= "@+id/account_add_layout"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="5"></GridLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:visibility="gone"
+        android:id= "@+id/account_add_sv2"
+        android:background="#cccccc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:layout_marginTop="10dp"
+            android:id= "@+id/account_add_layout2"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="5"></GridLayout>
+
+    </ScrollView>
+
+    <EditText
+        android:id= "@+id/account_add_remarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:padding="8dp"
+        android:hint="写点什么吧"
+        android:textSize="18sp"
+        android:background="#ffffff"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt7"
+            android:text="7"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt8"
+            android:text= "8"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt9"
+            android:text="9"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <ImageButton
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/cal_del"
+            android:padding="10dp"
+            android:src= "@drawable/backspace"
+            android:scaleType="centerInside" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt4"
+            android:text="4"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt5"
+            android:text= "5"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt6"
+            android:text="6"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/cal_plus"
+            android:text="+"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt1"
+            android:text="1"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt2"
+            android:text= "2"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt3"
+            android:text="3"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/cal_minus"
+            android:text="-"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/cal_clear"
+            android:text="C"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt0"
+            android:text= "0"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/txt_point"
+            android:text="."
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <Button
+            android:background="@drawable/caculate_button"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id= "@+id/cal_ok"
+            android:text="确定"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

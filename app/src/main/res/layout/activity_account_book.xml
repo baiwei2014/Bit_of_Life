@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account_book"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="5dp"
+    tools:context="com.example.bianguojian.project.AccountBook">
+
+    <TextView
+        android:id="@+id/account_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:textSize="15sp"
+        android:text="2016年11月11日" />
+
+    <RelativeLayout
+        android:id= "@+id/sum_layout"
+        android:background="@drawable/account_sum"
+        android:layout_below="@+id/account_date"
+        android:elevation="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/account_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight= "15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:textSize="35sp"
+            android:text="0.00" />
+
+        <TextView
+            android:id="@+id/account_outgo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支出：0"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf= "@+id/im_out"
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src= "@drawable/lend"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:id= "@+id/im_in"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src= "@drawable/borrow"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="15dp"
+            android:id= "@+id/im_out"/>
+
+        <TextView
+            android:id="@+id/account_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="收入：0"
+            android:layout_toRightOf="@id/im_in"
+            android:layout_marginTop="20dp"/>
+
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id= "@+id/account_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sum_layout"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"></ListView>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/account_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        app:backgroundTint="#4cafff"
+        app:rippleColor="#33728dff"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:src="@drawable/add" />
+
+</RelativeLayout>
