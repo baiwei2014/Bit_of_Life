@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_draw"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bianguojian.project.DrawActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id= "@+id/options"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#00bcd4">
+            <ImageView
+                android:id= "@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back"/>
+
+            <ImageView
+                android:id= "@+id/color"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="110dp"
+                android:src="@drawable/color"/>
+
+            <ImageView
+                android:id= "@+id/eraser"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/eraser"/>
+
+            <ImageView
+                android:id= "@+id/pen"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:src="@drawable/pen"/>
+
+
+            <View
+                android:id= "@+id/choose_view"
+                android:layout_width="35dp"
+                android:layout_height="2dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:background="#ffffff"
+                android:layout_alignLeft="@id/color"/>
+
+            <LinearLayout
+                android:id= "@+id/color_layout"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+                <Button
+                    android:id= "@+id/black"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="〇"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/dark_grey"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/light_grey"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/blue"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/red"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/green"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+                <Button
+                    android:id= "@+id/yellow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/color_button"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id= "@+id/pen_layout"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id= "@+id/circle"
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/circle"
+                    android:layout_marginBottom="4dp"/>
+
+
+                <SeekBar
+                    android:id= "@+id/width_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id= "@+id/clear"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src= "@drawable/clear"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"/>
+
+        </RelativeLayout>
+
+
+
+
+        <ImageView
+            android:id= "@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/paint_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        app:backgroundTint="#009a64"
+        app:rippleColor="#33728dff"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:src="@drawable/ok" />
+
+</RelativeLayout>
