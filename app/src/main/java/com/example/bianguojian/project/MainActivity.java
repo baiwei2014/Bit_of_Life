@@ -557,7 +557,6 @@ public class MainActivity extends Activity {
 
         WeatherWebService(Context context) {
             this.context = context;
-            Toast.makeText(context, "test", Toast.LENGTH_SHORT).show();
         }
 
         @Override
