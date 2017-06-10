@@ -344,7 +344,7 @@ public class MainActivity extends Activity {
                 if (networkInfo== null || !networkInfo.isConnected()) {
                     Toast.makeText(MainActivity.this, "当前没有可用网络！", Toast.LENGTH_SHORT).show();
                 } else {
-                    WeatherWebService weatherWebService = new WeatherWebService();
+                    WeatherWebService weatherWebService = new WeatherWebService(MainActivity.this);
                     weatherWebService.execute(city);
                 }
                 dialog.dismiss();
@@ -553,6 +553,11 @@ public class MainActivity extends Activity {
         public String high;
         public String low;
         public String type;
+        private Context context;
+
+        WeatherWebService(Context context) {
+            this.context = context;
+        }
 
         @Override
         protected  ArrayList<String> doInBackground(String... params) {
@@ -587,11 +592,11 @@ public class MainActivity extends Activity {
             String result0 = result.get(0);
             Log.i("God_Bian", result0);
             if (result0.indexOf("high\":\"") != -1) {
-                high = result0.substring(result0.indexOf("high\":\"")+10, result0.indexOf("\",\"type"));
-                low = result0.substring(result0.indexOf("low\":\"")+9, result0.indexOf("\",\"date"));
-                type = result0.substring(result0.indexOf("type\":\"")+7, result0.indexOf("\",\"low"));
+                high = result0.substring(result0.indexOf("high\":\"")+7, result0.indexOf("\",\"fx"));
+                low = result0.substring(result0.indexOf("low\":\"")+6, result0.indexOf("\",\"fl"));
+                type = result0.substring(result0.indexOf("type\":\"")+7, result0.indexOf("\"},\"city\""));
                 AlertDialog ad = new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(city + ": " +  type + "  温度: " + low + " ~ " + high)
+                        .setTitle(city + ": " +  type + "\n" + low + " ~ " + high)
                         .setNegativeButton("确定", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                             }
